@@ -1,0 +1,73 @@
+# Smart Speaker 設定ファイル
+
+[audio]
+# サンプルレート（Whisperは16kHzを使用）
+sample_rate = 16000
+# 録音最大時間（秒）
+max_record_seconds = 10
+# 無音検出閾値（0.0〜1.0、小さいほど敏感）
+# 環境に応じて調整（静かな部屋: 0.005-0.01、通常: 0.02〜0.03）
+silence_threshold = 0.03
+# 無音継続時間で録音終了（秒）
+silence_duration = 1.0
+# 入力ゲイン（1.0 = 変更なし、4.0 = 4倍に増幅）
+# マイク入力が小さい場合に調整
+input_gain = 1.2
+
+# === 無音検出改善設定 ===
+# RMS平滑化係数（0.0〜1.0、小さいほど滑らかに追従）
+# 静かな部屋: 0.05、通常: 0.10、ノイズ多い: 0.15
+smoothing_alpha = 0.1
+# 相対閾値の乗数（発話はノイズフロアの何倍で検出するか）
+# 静かな部屋: 2.5、通常: 3.0、ノイズ多い: 4.0
+relative_threshold_multiplier = 3.0
+# ノイズフロアキャリブレーション期間（秒）
+calibration_duration = 0.5
+# デバウンスフレーム数（連続した無音フレームが何回続いたら無音とするか）
+# 静かな部屋: 2、通常: 3、ノイズ多い: 5
+debounce_frames = 3
+
+[wakeword]
+# ウェイクワードファイルのパス（.rpwファイル）
+# https://givimad.github.io/rustpotter-create-model-demo/ で作成可能
+wakeword_path = "sakura.rpw"
+
+# === 検出閾値設定 ===
+# 検出閾値（0.0〜1.0、高いほど厳格）
+threshold = 0.35
+# 平均スコア閾値（0.0〜1.0）
+avg_threshold = 0.15
+# 連続検出回数（単発の誤検出を防ぐ）
+min_scores = 1
+
+[stt]
+# Whisperモデルファイルのパス
+# ggml形式のモデルを指定（例: ggml-large-v3.bin, ggml-base.bin）
+model_path = "models/ggml-large-v3-turbo.bin"
+
+# 認識言語
+# 日本語: "ja", 英語: "en", 自動検出: "auto"
+language = "ja"
+
+[llm]
+# OllamaエンドポイントURL
+endpoint = "http://localhost:11434"
+
+# 使用するモデル名
+# 利用可能: llama3.2:latest(3.2B), qwen3:8b, gemma3:12b, gemma3:27b
+model = "gemma3:4b"
+
+# システムプロンプト
+system_prompt = "あなたは親切なアシスタントです。3文以内で簡潔に日本語で回答してください。"
+
+[tts]
+# VOICEVOXエンドポイントURL
+endpoint = "http://localhost:50021"
+
+# 話者ID
+# 0: 四国めたん, 1: ずんだもん, 2: 春日部つむぎ, etc.
+speaker_id = 2
+
+# 話速 (0.5 - 2.0)
+speed = 1.2
+

@@ -1,0 +1,25 @@
+# Build artifacts
+/target/
+
+# Model files (too large)
+/models/
+
+# Wakeword files (user-specific)
+*.rpw
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log

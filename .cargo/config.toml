@@ -1,0 +1,8 @@
+[env]
+# RTX 5070 Ti (Blackwell architecture) - sm_120
+CMAKE_CUDA_ARCHITECTURES = "120"
+CUDAARCHS = "120"
+# Allow unsupported VS version (VS 18/2025)
+CUDAFLAGS = "-allow-unsupported-compiler"
+CMAKE_CUDA_FLAGS = "-allow-unsupported-compiler"
+NVCC_APPEND_FLAGS = "-allow-unsupported-compiler"
